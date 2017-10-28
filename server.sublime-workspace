@@ -1,0 +1,316 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"s",
+				"surveysReducer"
+			],
+			[
+				"render",
+				"renderContent"
+			],
+			[
+				"require",
+				"requireLogin"
+			],
+			[
+				"obser",
+				"observableArray"
+			],
+			[
+				"HTMLski",
+				"HTMLskillsStart"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 104.0,
+		"last_filter": "Install",
+		"selected_items":
+		[
+			[
+				"Install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 416.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/FirstSteps/suggestions_murka/server/index.js",
+		"/C/Users/Don/Downloads/parallax-template/js/init.js",
+		"/C/Users/Don/Downloads/parallax-template/js/materialize.js",
+		"/D/FirstSteps/feedback_app/server/routes/surveyRoutes.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/surveys/SurveyList.js",
+		"/D/FirstSteps/feedback_app/server/client/src/reducers/index.js",
+		"/D/FirstSteps/feedback_app/server/client/src/reducers/surveysReducer.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/Dashboard.js",
+		"/D/FirstSteps/feedback_app/server/client/src/actions/types.js",
+		"/D/FirstSteps/feedback_app/server/client/src/actions/index.js",
+		"/C/Users/Don/Downloads/parallax-template/index.html",
+		"/D/FirstSteps/feedback_app/server/client/src/utils/validateEmails.js",
+		"/D/FirstSteps/feedback_app/server/package.json",
+		"/D/FirstSteps/feedback_app/server/services/emailTemplates/surveyTemplate.js",
+		"/D/FirstSteps/feedback_app/server/sendgrid_webhook.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/surveys/SurveyNew.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/surveys/SurveyForm.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/surveys/SurveyFormReview.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/surveys/SurveyField.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/surveys/formFields.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/App.js",
+		"/D/FirstSteps/feedback_app/server/client/public/index.html",
+		"/D/FirstSteps/feedback_app/server/services/Mailer.js",
+		"/D/FirstSteps/feedback_app/server/config/prod.js",
+		"/D/FirstSteps/feedback_app/server/config/dev.js",
+		"/D/FirstSteps/feedback_app/server/client/src/index.js",
+		"/D/FirstSteps/feedback_app/server/index.js",
+		"/D/FirstSteps/feedback_app/server/middlewares/requireCredits.js",
+		"/D/FirstSteps/feedback_app/server/models/Survey.js",
+		"/D/FirstSteps/feedback_app/server/models/Recipient.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/Header.js",
+		"/D/FirstSteps/feedback_app/server/routes/billingRoutes.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/Payments.js",
+		"/D/FirstSteps/feedback_app/server/middlewares/requireLogin.js",
+		"/D/FirstSteps/feedback_app/server/models/User.js",
+		"/D/FirstSteps/feedback_app/server/client/src/components/Landing.js",
+		"/D/FirstSteps/feedback_app/server/routes/authRoutes.js",
+		"/D/FirstSteps/feedback_app/server/client/.env.production",
+		"/D/FirstSteps/feedback_app/server/client/.env.development",
+		"/D/FirstSteps/feedback_app/server/client/src/reducers/authReducer.js",
+		"/D/FirstSteps/feedback_app/server/client/package.json",
+		"/D/FirstSteps/feedback_app/server/services/passport.js",
+		"/D/FirstSteps/feedback_app/server/client/src/App.js",
+		"/C/Users/Don/Desktop/async.js",
+		"/D/FirstSteps/feedback_app/server/config/keys.js",
+		"/C/Users/Don/AppData/Roaming/npm/node_modules/create-react-app/index.js",
+		"/D/FirstSteps/js patterns udacity/resume-master/resume/package.json",
+		"/D/FirstSteps/feedback_app/server/.gitignore",
+		"/D/FirstSteps/kevin-update/functions/index.js",
+		"/C/Program Files/Sublime Text 3/Packages/JsPrettier/JsPrettier.sublime-settings",
+		"/D/FirstSteps/kevin-update/firebase.json",
+		"/D/FirstSteps/kevin-update/.firebaserc",
+		"/D/FirstSteps/kevin-update/functions/package.json",
+		"/D/FirstSteps/kevin-update/functions/database.rules.json",
+		"/D/FirstSteps/kevin-update/functions/service-account.json",
+		"/D/FirstSteps/kevin-update/functions/storage/service-account.json",
+		"/C/Users/Don/Downloads/kevin-minion-bot-9b16fede834a.json",
+		"/D/FirstSteps/kevin/storage/kevin_db.json",
+		"/D/FirstSteps/kevin-update/package-lock.json",
+		"/D/FirstSteps/kevin-update/functions/package-lock.json",
+		"/D/FirstSteps/kevin-update/functions/index_tst.js",
+		"/D/FirstSteps/kevin-update/functions/index_for_tst.js",
+		"/D/FirstSteps/kevin-update/functions/test/test.js",
+		"/D/FirstSteps/kevin/index.js",
+		"/D/FirstSteps/kevin/storage/service-account.json",
+		"/D/FirstSteps/kevin/service-account.json",
+		"/D/FirstSteps/kevin-update/functions/test/testing.js",
+		"/D/FirstSteps/kevin-update/test/testing.js",
+		"/D/FirstSteps/kevin-update/index.js",
+		"/D/FirstSteps/kevin/data_retrieve.js",
+		"/D/FirstSteps/kevin/storage/todoApp-bb26b50fbc2f.json",
+		"/D/FirstSteps/kevin-update/package.json",
+		"/D/FirstSteps/kevin/package.json",
+		"/D/FirstSteps/kevin-update/node_modules/firebase-functions/lib/config.js",
+		"/C/Users/Don/Desktop/codeanywhere.js",
+		"/D/FirstSteps/app_assistant/assistant-codelab/solution/functions/index.js",
+		"/C/Users/Don/Downloads/intents/request_location_permission.json",
+		"/D/FirstSteps/app_assistant/assistant-codelab/solution/functions/package.json",
+		"/D/FirstSteps/contact-form/index.html",
+		"/D/FirstSteps/contact-form/styles/reset.css",
+		"/D/FirstSteps/contact-form/styles/normalize.css",
+		"/D/FirstSteps/contact-form/styles/main.css",
+		"/D/FirstSteps/contact-form/styles/main.scss",
+		"/D/FirstSteps/contact-form/styles/main.scss.css",
+		"/C/Users/Don/Desktop/index.js",
+		"/C/Users/Don/Desktop/contact-form/index.html",
+		"/C/Users/Don/Desktop/contact-form/script.js",
+		"/C/Users/Don/Desktop/contact-form/main.css",
+		"/D/FirstSteps/Backbone/Todo_list_app/index.html",
+		"/C/Users/Don/AppData/Local/Google/Cloud SDK/nodejs-docs-samples/appengine/hello-world/package.json",
+		"/C/Users/Don/AppData/Local/Google/Cloud SDK/nodejs-docs-samples/appengine/hello-world/app.js",
+		"/C/Users/Don/AppData/Local/Google/Cloud SDK/nodejs-docs-samples/appengine/express/README.md",
+		"/D/FirstSteps/Asynchronous Programming with JavaScript/Product catalog/productCatalog.js",
+		"/D/FirstSteps/Asynchronous Programming with JavaScript/Product catalog/library.js",
+		"/D/FirstSteps/Asynchronous Programming with JavaScript/Product catalog/productCatalog.html",
+		"/D/FirstSteps/kevin/storage/node-client.js",
+		"/D/FirstSteps/kevin/node-client.js",
+		"/C/Users/Don/Downloads/todoapp-34c1b-export.json",
+		"/D/FirstSteps/kevin/storage/database.js",
+		"/C/Users/Don/Downloads/todoApp-d988924426e2.json",
+		"/D/FirstSteps/kevin/database.js",
+		"/C/Users/Don/Desktop/kevin_db.json",
+		"/D/FirstSteps/kevin/server.js",
+		"/D/FirstSteps/Backbone/Todo_list_app/js/views/app-view.js",
+		"/D/FirstSteps/Backbone/Todo_list_app/js/app.js",
+		"/D/FirstSteps/Backbone/Todo_list_app/js/views/multiple-view.js",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/index.html",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/js/collections/todos.js",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/js/models/todo.js",
+		"/D/FirstSteps/Backbone/Andi-Ossmani/js/app.js",
+		"/D/FirstSteps/Backbone/Andi-Ossmani/index.html",
+		"/D/FirstSteps/Backbone/Andi-Ossmani/js/backbone/backbone-1.3.3.js",
+		"/D/FirstSteps/Backbone/Andi-Ossmani/js/jQuery/jquery-3.2.1.js",
+		"/D/FirstSteps/Backbone/Andi-Ossmani/js/underscore/underscore-1.8.3.js",
+		"/D/FirstSteps/Backbone/service-chooser-app/index.html",
+		"/D/FirstSteps/Backbone/service-chooser-app/assets/js/script.js",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/bower_components/todomvc-common/base.css",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/js/views/todo-view.js",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/bower_components/todomvc-common/bg.png",
+		"/D/FirstSteps/js patterns udacity/ud989-todo-app-master/bower.json",
+		"/D/FirstSteps/js patterns udacity/cat-clicker-knockout/index.html",
+		"/D/FirstSteps/js patterns udacity/cat-clicker-knockout/scripts/app.js",
+		"/D/FirstSteps/js patterns udacity/cat-clicker-knockout/styles/main.css",
+		"/D/FirstSteps/js patterns udacity/resume-master/resume/index.html",
+		"/C/Users/Don/Desktop/perfc",
+		"/D/FirstSteps/js patterns udacity/cat-clicker-knockout/scripts/knockout-3.4.2.js",
+		"/D/FirstSteps/js patterns udacity/cat-clicker-knockout/app.js",
+		"/D/FirstSteps/js patterns udacity/resume-master/resume/css/style.css"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "server.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 235.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
