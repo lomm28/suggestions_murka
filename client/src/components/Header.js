@@ -11,8 +11,8 @@ class Header extends Component {
 				return <li><a href="/auth/google">Log in with Google</a></li>;
 			default:
 				return [
-					//<li key = "1"><a href="#">Assigned to me</a></li>,
-					//<li key = "3" style = {{ margin: "0 10px" }}><a href="#"> Submitted by myself</a></li>,
+					<li key = "1"><a href="#">Assigned to me</a></li>,
+					<li key = "3" style = {{ margin: "0 10px" }}><a href="#"> Submitted by myself</a></li>,
 					<li key = "2"><a href="/api/logout">Log out</a></li>
 				];
 		}
