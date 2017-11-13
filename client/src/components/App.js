@@ -7,6 +7,7 @@ import Header from "./Header";
 import Landing from "./Landing";
 import DashBoard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
+import Footer from "./Footer";
 
 class App extends Component {
 	componentDidMount() {
@@ -16,11 +17,14 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div className ="container">
+				<div className="page-flexbox-wrapper">
 					<Header />
-					<Route exact path="/" component={Landing} />
-					<Route exact path="/surveys" component={DashBoard} />
-					<Route path="/surveys/new" component={SurveyNew} />
+					<main>
+						<Route exact path="/" component={Landing} />
+						<Route exact path="/surveys" component={DashBoard} />
+						<Route path="/surveys/new" component={SurveyNew} />
+					</main>
+					<Footer />
 				</div>
 			</BrowserRouter>
 		);

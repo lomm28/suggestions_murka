@@ -1,48 +1,38 @@
 const sendgrid = require("sendgrid");
 const helper = sendgrid.mail;
 const keys = require("../config/keys");
+const fs = require("fs");
 
 class Mailer extends helper.Mail {
-	constructor({ subject, recipients }, content) {
+	constructor({ subject, responsibleDept, uploadfile }, content) {
 		super();
 
 		this.sgApi = sendgrid(keys.sendGridKey);
-		this.from_email = new helper.Email("no-reply@emaily.com");
+		this.from_email = new helper.Email("no-reply@suggestia.com");
 		this.subject = subject;
 		this.body = new helper.Content("text/html", content);
-		this.recipients = this.formatAddresses(recipients);
+		this.recipient = new helper.Email(responsibleDept.value);
 
-		this.addContent(this.body);
-		this.addClickTracking();
-		this.addRecipients();
-	}
+		this.mail = new helper.Mail(this.from_email, this.subject, this.recipient, this.body);
 
-	formatAddresses(recipients) {
-		return recipients.map(({ email }) => {
-			return new helper.Email(email);
-		});
-	}
-	addClickTracking() {
-		const trackingSettings = new helper.TrackingSettings();
-		const clickTracking = new helper.ClickTracking(true, true);
 
-		trackingSettings.setClickTracking(clickTracking);
-		this.addTrackingSettings(trackingSettings);
-	}
-	addRecipients() {
-		const personalize = new helper.Personalization();
+		this.attachment = new helper.Attachment();
+		this.file = fs.readFileSync(uploadfile[0].name);
+		this.base64File = new Buffer(this.file).toString("base64");
+		this.attachment.setType(uploadfile[0].type);
+    	this.attachment.setFilename(uploadfile[0].name);
+    	this.attachment.setDisposition("attachment");
+    	this.attachment.setContent(this.base64File);
 
-		this.recipients.forEach(recipient => {
-			personalize.addTo(recipient);
-		});
-		this.addPersonalization(personalize);
+    	this.mail.addAttachment(this.attachment);
+
 	}
 
 	async send() {
 		const request = this.sgApi.emptyRequest({
 			method: 'POST',
 			path: '/v3/mail/send',
-			body: this.toJSON()
+			body: this.mail.toJSON()
 		});
 
 		const response = await this.sgApi.API(request);
