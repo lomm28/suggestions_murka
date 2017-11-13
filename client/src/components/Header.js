@@ -41,7 +41,7 @@ class Header extends Component {
 							id="logo-container"
 							className="brand-logo"
 						>
-							<img src={logo} />
+							Suggestia
 						</Link>
 						<ul className="right">{this.renderContent()}</ul>
 					</div>
