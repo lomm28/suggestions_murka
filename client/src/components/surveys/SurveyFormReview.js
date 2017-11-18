@@ -10,6 +10,7 @@ const SurveyReview = ({
 	onCancel,
 	formValues,
 	submitSurvey,
+	uploadFile,
 	history
 }) => {
 	const reviewFields = _.map(formFields, ({ name, label }) => {
@@ -46,7 +47,7 @@ const SurveyReview = ({
 			</button>
 			<button
 				className="green btn-flat right white-text"
-				onClick={() => submitSurvey(formValues, history)}
+				onClick={ () => { submitSurvey(formValues, history); uploadFile(formValues.uploadfile[0])} }
 			>
 				Send Survey
 				<i className="material-icons right">email</i>
@@ -56,7 +57,7 @@ const SurveyReview = ({
 };
 
 function mapStateToProps(state) {
-	
+	console.log(state);
 	return {
 		formValues: state.form.surveyForm.values
 	};

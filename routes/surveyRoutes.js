@@ -36,8 +36,8 @@ module.exports = app => {
 
 	app.post('/api/surveys/', requireLogin, async (req, res) => {
 		
-		const { title, subject, responsibleDept, body, uploadfile } = req.body;
-		console.log(uploadfile);
+		const { title, subject, responsibleDept, body } = req.body;
+		
 		const survey = new Survey({
 			title,
 			subject,
@@ -46,21 +46,6 @@ module.exports = app => {
 			_user: req.user.id,
 			dateSent: Date.now()
 		});
-
-
-		const gridfs = require('mongoose-gridfs')({
-  			collection:'surveys',
-  			model:'Survey',
-  			mongooseConnection: mongoose.connect(keys.mongoURI)
-		});
-
-		const writestream = gridfs.createWriteStream({
-  			filename: uploadfile[0].name, 
-  			contentType: uploadfile[0].type
-  		});
-
-  		fs.createReadStream(uploadfile[0].preview).pipe(writestream);
-
 	
 		const mailer = new Mailer(survey, surveyTemplate(survey));
 
