@@ -59,4 +59,9 @@ module.exports = app => {
 			res.status(422).send(err);
 		}
 	});
+
+	app.post('/api/fileupload/', requireLogin, async (req, res) => {
+		console.log(req.data);
+		res.send({});
+	});
 };
