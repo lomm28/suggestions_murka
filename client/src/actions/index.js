@@ -15,8 +15,9 @@ export const submitSurvey = (values, history) => async dispatch => {
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const uploadFile = ({ name, preview, type, size }) => async dispatch => {
+export const uploadFile = ({ uploadfile, name, preview, type, size }) => async dispatch => {
 	  let data = new FormData();
+	  	data.append('uploadfile', document);
 	  	data.append('name', name);
   		data.append('preview', preview);
   		data.append('type', type);
