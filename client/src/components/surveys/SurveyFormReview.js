@@ -49,7 +49,7 @@ const SurveyReview = ({
 			</button>
 			<button
 				className="green btn-flat right white-text"
-				onClick={ () => {submitSurvey(formValues, history); console.log(formData)} }
+				onClick={ () => {submitSurvey(formData, history); console.log(formData)} }
 			>
 				Send Survey
 				<i className="material-icons right">email</i>
@@ -58,7 +58,7 @@ const SurveyReview = ({
 	);
 };
 
-function createFormData({ values }) {
+function createFormData(values) {
 
 	let data = new FormData();
 
