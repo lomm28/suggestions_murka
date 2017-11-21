@@ -7,18 +7,9 @@ const fs = require('fs');
 const requireLogin = require('../middlewares/requireLogin');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
-const multer = require('multer');
 
 const Survey = mongoose.model('surveys');
 
-const storage = multer.diskStorage({
-  destination: './files',
-  filename(req, file, cb) {
-    cb(null, `${new Date()}-${file.originalname}`);
-  },
-});
-
-const upload = multer({ storage });
 
 module.exports = app => {
 
@@ -45,8 +36,8 @@ module.exports = app => {
 
 	app.post('/api/surveys/', requireLogin, async (req, res) => {
 		
-		const { title, subject, responsibleDept, body } = req.body;
-		
+		const { title, subject, responsibleDept, body, uploadfile } = req.body;
+		console.log(uploadfile);
 		const survey = new Survey({
 			title,
 			subject,
@@ -67,19 +58,5 @@ module.exports = app => {
 		} catch(err) {
 			res.status(422).send(err);
 		}
-	});
-
-	app.post('/api/fileupload/', requireLogin, upload.single('data'), async (req, res) => {
-		
-		const file = req.data;
-		const meta = req.body;
-		console.log(file);
-		const imgPath = "files/"+ meta.name;
-
-		const uploadingFile = new Survey;
-		uploadingFile.uploadedFile.data = fs.readFileSync(imgPath);
-		uploadingFile.uploadedFile.contentType = meta.type;
-		uploadingFile.save();
-
 	});
 };

@@ -8,14 +8,17 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const submitSurvey = (values, history) => async dispatch => {
-	const res = await axios.post('/api/surveys', values);
+	let data = new FormData();
+	data.append('values', values);
+
+	const res = await axios.post('/api/surveys', data);
 
 	history.push('/surveys');
 
 	dispatch({ type: FETCH_USER, payload: res.data });
 };
 
-export const uploadFile = ({ uploadfile, name, preview, type, size }) => async dispatch => {
+/*export const uploadFile = ({ uploadfile, name, preview, type, size }) => async dispatch => {
 	  let data = new FormData();
 	  	data.append('uploadfile', document);
 	  	data.append('name', name);
@@ -26,7 +29,7 @@ export const uploadFile = ({ uploadfile, name, preview, type, size }) => async d
 	const res = await axios.post('/api/fileupload', data);
 
 	dispatch({ type: UPLOAD_FILE, payload: res.data });
-};
+};*/
 
 export const fetchSurveys = () => async dispatch => {
 	const res = await axios.get('/api/surveys');
