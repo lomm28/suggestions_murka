@@ -1,12 +1,14 @@
 const _ = require('lodash');
-const Path = require('path-parser');
+//const Path = require('path-parser');
 const { URL } = require('url');
+const path = require('path');
 const mongoose = require('mongoose');
-const grid = require('gridfs-stream');
 const fs = require('fs');
+const formidable = require('formidable');
 const requireLogin = require('../middlewares/requireLogin');
 const Mailer = require('../services/Mailer');
 const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
+const dbCtrl = require('./dbCtrl');
 
 const Survey = mongoose.model('surveys');
 
@@ -37,7 +39,7 @@ module.exports = app => {
 	app.post('/api/surveys/', requireLogin, async (req, res) => {
 		
 		const { title, subject, responsibleDept, body, uploadfile } = req.body;
-		console.log(uploadfile);
+		
 		const survey = new Survey({
 			title,
 			subject,
@@ -58,5 +60,18 @@ module.exports = app => {
 		} catch(err) {
 			res.status(422).send(err);
 		}
+		
+		const form = new formidable.IncomingForm()
+  		form.uploadDir = path.join(__dirname, '../public/uploads')
+  		form.parse(req, (err, title, file) => {
+    		if (err) {
+      			res.json(err)
+    		}
+    		const name = path.basename(file.file.path) + file.file.name
+    		fs.rename(file.file.path, path.join(form.uploadDir, name))
+    		req.body = { src: name, title: title.title }
+    		dbCtrl.create(req, res)
+  		})
+
 	});
 };

@@ -5,12 +5,12 @@ import { connect } from "react-redux";
 import formFields from "./formFields";
 import { withRouter } from "react-router-dom";
 import * as actions from "../../actions";
+import objectToFormData from "object-to-formdata";
 
 const SurveyReview = ({
 	onCancel,
 	formValues,
 	submitSurvey,
-	uploadFile,
 	history
 }) => {
 	const reviewFields = _.map(formFields, ({ name, label }) => {
@@ -24,8 +24,6 @@ const SurveyReview = ({
 
 	const dropDownValue = formValues.responsibleDept.value;
 	const dropDownName = formValues.responsibleDept.name;
-
-	const formData = createFormData(formValues);
 
 	return (
 		<div className="container" style={{ marginBottom: "10px" }}>
@@ -49,7 +47,7 @@ const SurveyReview = ({
 			</button>
 			<button
 				className="green btn-flat right white-text"
-				onClick={ () => {submitSurvey(formData, history); console.log(formData)} }
+				onClick={() => submitSurvey(formValues, history)}
 			>
 				Send Survey
 				<i className="material-icons right">email</i>
@@ -58,22 +56,12 @@ const SurveyReview = ({
 	);
 };
 
-function createFormData(values) {
-
-	let data = new FormData();
-
-	for (let key in values) {
-		data.append('key', values[key]);
-	};
-		
-	return data;
-}
-
 function mapStateToProps(state) {
 	
 	return {
 		formValues: state.form.surveyForm.values
 	};
+
 }
 
 export default connect(mapStateToProps, actions)(withRouter(SurveyReview));

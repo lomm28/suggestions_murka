@@ -1,7 +1,6 @@
 const sendgrid = require("sendgrid");
 const helper = sendgrid.mail;
 const keys = require("../config/keys");
-const fs = require("fs");
 
 class Mailer extends helper.Mail {
 	constructor({ subject, responsibleDept, uploadfile }, content) {
@@ -14,17 +13,6 @@ class Mailer extends helper.Mail {
 		this.recipient = new helper.Email(responsibleDept.value);
 
 		this.mail = new helper.Mail(this.from_email, this.subject, this.recipient, this.body);
-
-
-		this.attachment = new helper.Attachment();
-		this.file = fs.readFileSync(uploadfile[0].name);
-		this.base64File = new Buffer(this.file).toString("base64");
-		this.attachment.setType(uploadfile[0].type);
-    	this.attachment.setFilename(uploadfile[0].name);
-    	this.attachment.setDisposition("attachment");
-    	this.attachment.setContent(this.base64File);
-
-    	this.mail.addAttachment(this.attachment);
 
 	}
 

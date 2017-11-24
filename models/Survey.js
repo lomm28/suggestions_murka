@@ -7,7 +7,7 @@ const surveySchema = new Schema({
 	body: String,
 	subject: String,
 	responsibleDept: Object,
-	uploadedFile: String,
+	img: { type: Schema.Types.ObjectId, ref: 'ImgFile' },
 	_user: { type: Schema.Types.ObjectId, ref: 'User' },
 	dateSent: Date,
 	lastResponded: Date
