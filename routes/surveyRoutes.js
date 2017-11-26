@@ -1,16 +1,13 @@
 const _ = require('lodash');
-//const Path = require('path-parser');
+const Path = require('path-parser');
 const { URL } = require('url');
 const path = require('path');
 const mongoose = require('mongoose');
+const Survey = mongoose.model('surveys');
 const fs = require('fs');
 const formidable = require('formidable');
 const requireLogin = require('../middlewares/requireLogin');
-const Mailer = require('../services/Mailer');
-const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 const dbCtrl = require('./dbCtrl');
-
-const Survey = mongoose.model('surveys');
 
 
 module.exports = app => {
@@ -31,46 +28,27 @@ module.exports = app => {
 		res.send(allSurveys);
 	});
 
-	app.get('/api/surveys/:surveyId/:choice', (req, res) =>{
-		res.send('Thanks for voting! Wow!');
-	});
-
-
 	app.post('/api/surveys/', requireLogin, async (req, res) => {
-		
-		const { title, subject, responsibleDept, body, uploadfile } = req.body;
-		
-		const survey = new Survey({
-			title,
-			subject,
-			responsibleDept,
-			body,
-			_user: req.user.id,
-			dateSent: Date.now()
-		});
-	
-		const mailer = new Mailer(survey, surveyTemplate(survey));
 
-		try {
-			await mailer.send();
-			await survey.save();
-			const user = await req.user.save();
-
-			res.send(user);
-		} catch(err) {
-			res.status(422).send(err);
-		}
-		
 		const form = new formidable.IncomingForm()
-  		form.uploadDir = path.join(__dirname, '../public/uploads')
-  		form.parse(req, (err, title, file) => {
-    		if (err) {
-      			res.json(err)
+  			form.uploadDir = path.join(__dirname, '../public/uploads')
+  			await form.parse(req, (err, title, file) => {
+    			if (err) {
+      				res.json(err)
+    			}
+    		console.log(file['uploadfile[0]'].name);
+    		
+    		const name = path.basename(file['uploadfile[0]'].path) + file['uploadfile[0]'].name
+    		fs.rename(file['uploadfile[0]'].path, path.join(form.uploadDir, name))
+    		req.body = { 
+    			src: name, 
+    			title: title.title,
+    			subject: title.subject,
+    			responsibleDept: title['responsibleDept[name]'],
+    			deptEmail: title['responsibleDept[value]'],
+    			body: title.body
     		}
-    		const name = path.basename(file.file.path) + file.file.name
-    		fs.rename(file.file.path, path.join(form.uploadDir, name))
-    		req.body = { src: name, title: title.title }
-    		dbCtrl.create(req, res)
+    		dbCtrl.create(req, res);
   		})
 
 	});

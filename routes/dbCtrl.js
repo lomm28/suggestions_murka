@@ -1,32 +1,36 @@
 const mongoose = require('mongoose');
-const Image = mongoose.model('images');
+const Survey = mongoose.model('surveys');
 const path = require('path');
-const PATH_IMG = path.join(__dirname, '..public/uploads/');
+const PATH_IMG = path.join(__dirname, '../public/uploads');
+const Mailer = require('../services/Mailer');
+const surveyTemplate = require('../services/emailTemplates/surveyTemplate');
 
 module.exports = {
-    create: (req, res) => {
-
-        const image = req.body;
+    create: async (req, res) => {
         
-        new Image({
-            src: image.src,
-            title: image.title
-        })
-        .save((err) => {
-            if (err) {
-                res.status(504)
-                res.end(err)
-            } 
-            else {
-              res.json({
-              result: {
-                  src: image.src,
-                  title: image.title
-              },
-                  path: PATH_IMG
-              })
-                  res.end()
-            }
-        })
+        const { title, body, subject, responsibleDept, deptEmail, src } = req.body;
+      
+        const survey = new Survey({
+          title,
+          body,
+          subject,
+          responsibleDept,
+          deptEmail,
+          src,
+          _user: req.user.id,
+          dateSent: Date.now()
+        });
+
+        const mailer = new Mailer(survey, surveyTemplate(survey));
+
+        try {
+          await mailer.send();
+          await survey.save();
+          const user = await req.user.save();
+
+          res.send(user);
+        } catch(err) {
+          res.status(422).send(err);
+        }       
     }
 };

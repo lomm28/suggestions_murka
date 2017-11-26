@@ -14,6 +14,9 @@ module.exports = survey => {
 					<div>
 						<a href="${keys.redirectDomain}/api/surveys/${survey.id}/no">No</a>
 					</div>
+					<div>
+						<a href="${keys.redirectDomain}/public/uploads/${survey.src}" download="${survey.src}">Download a file</a>
+					</div>
 				</div>
 			</body>
 		</html>

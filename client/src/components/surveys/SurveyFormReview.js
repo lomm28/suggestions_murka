@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import formFields from "./formFields";
 import { withRouter } from "react-router-dom";
 import * as actions from "../../actions";
-import objectToFormData from "object-to-formdata";
 
 const SurveyReview = ({
 	onCancel,
