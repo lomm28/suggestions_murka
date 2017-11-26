@@ -36,7 +36,7 @@ module.exports = app => {
     			if (err) {
       				res.json(err)
     			}
-    		console.log(file['uploadfile[0]'].name);
+    		//console.log(file['uploadfile[0]'].name);
     		
     		const name = path.basename(file['uploadfile[0]'].path) + file['uploadfile[0]'].name
     		fs.rename(file['uploadfile[0]'].path, path.join(form.uploadDir, name))
