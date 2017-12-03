@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 class Mailer extends helper.Mail {
-	constructor({ subject, deptEmail, type, src }, content) {
+	constructor({ subject, deptEmail }, content) {
 		super();
 
 		this.sgApi = sendgrid(keys.sendGridKey);
@@ -15,15 +15,6 @@ class Mailer extends helper.Mail {
 		this.recipient = new helper.Email(deptEmail);
 
 		this.mail = new helper.Mail(this.from_email, this.subject, this.recipient, this.body);
-
-			const attachment = new helper.Attachment();
-			const file = fs.readFileSync(path.join(__dirname, '../public/uploads', src));
-			const base64File = new Buffer(file).toString("base64");
-			attachment.setContent(base64File);
-			attachment.setType(type);
-			attachment.setFilename(src);
-			attachment.setDisposition("attachment");
-			this.mail.addAttachment(attachment);
 
 	}
 

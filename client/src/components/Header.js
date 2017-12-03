@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import logo from "./img/logo_3.png";
+import googlebtn from "./img/google-btn.png";
 
 class Header extends Component {
 
@@ -13,16 +13,16 @@ class Header extends Component {
 			case false:
 				return (
 					<li>
-						<a href="/auth/google">Log in with Google</a>
+						<a href="/auth/google"> Login with Google </a>
 					</li>
 				);
 			default:
 				return [
 					<li key="1">
-						<a href="#">Assigned to me</a>
+						<Link to="/surveys/assigned/to/user">Assigned to me</Link>
 					</li>,
 					<li key="3" style={{ margin: "0 10px" }}>
-						<a href="/api/surveys/all">All suggestions</a>
+						<Link to="/allSurveys">All suggestions</Link>
 					</li>,
 					<li key="2">
 						<a href="/api/logout">Log out</a>
@@ -40,8 +40,10 @@ class Header extends Component {
 							to={this.props.auth ? "/surveys" : "/"}
 							id="logo-container"
 							className="brand-logo"
+							style={{fontFamily: "Lobster, cursive"}}
 						>
 							Suggestia
+							<i className="material-icons">lightbulb_outline</i>
 						</Link>
 						<ul className="right">{this.renderContent()}</ul>
 					</div>

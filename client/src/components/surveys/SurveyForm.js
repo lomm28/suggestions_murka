@@ -53,7 +53,7 @@ class SurveyForm extends Component {
 					<Field 
 						component={ DropzoneField } 
 						name="uploadfile" 
-						accept="image/*, video/*, audio/*"
+						accept="image/*, video/*, audio/mp3, .doc, .pdf"
 					/>
 				</div>
 			</div>

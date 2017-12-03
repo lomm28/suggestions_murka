@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchSurveys } from "../../actions";
+import { fetchAllSurveys } from "../../actions";
 import nosuggestions from "../img/nosuggestions.png";
 
-class SurveyList extends Component {
+class AllSurveysList extends Component {
 
 	componentDidMount() {
-		this.props.fetchSurveys();
+		this.props.fetchAllSurveys();
 	}
 
 	renderNoImg() {
@@ -18,8 +18,8 @@ class SurveyList extends Component {
 	}
 
 
-	renderSurveys() {
-		return this.props.surveys.reverse().map(survey => {
+	renderAllSurveys() {
+		return this.props.allSurveys.reverse().map(survey => {
 			return (
 				<div className="card blue-grey darken-1" key={survey._id}>
 					<div className="card-content white-text">
@@ -40,12 +40,12 @@ class SurveyList extends Component {
 	}
 
 	render() {
-		return <div className = "container">{this.renderSurveys().length ? this.renderSurveys() : this.renderNoImg() }</div>;
+		return <div className = "container">{this.renderAllSurveys().length ? this.renderAllSurveys() : this.renderNoImg() }</div>;
 	}
 }
 
-function mapStateToProps({ surveys }) {
-	return { surveys };
+function mapStateToProps({ allSurveys }) {
+	return { allSurveys };
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(mapStateToProps, { fetchAllSurveys })(AllSurveysList);

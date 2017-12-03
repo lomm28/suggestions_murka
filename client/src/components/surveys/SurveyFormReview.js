@@ -35,7 +35,7 @@ const SurveyReview = ({
 			</div>
 			<div>
 				<label>Uploaded File</label>
-				<div>{ formValues.uploadfile[0].name }</div>
+				<div>{ formValues.uploadfile ? formValues.uploadfile[0].name : "Nothing was submitted" }</div>
 			</div>
 			
 			<button

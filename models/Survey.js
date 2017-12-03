@@ -9,7 +9,11 @@ const surveySchema = new Schema({
 	responsibleDept: String,
 	deptEmail: String,
 	src: String,
+	type: String,
 	_user: { type: Schema.Types.ObjectId, ref: 'User' },
+	status: { type: String, default: 'Submitted' },
+	userEmail: String,
+	userName: String,
 	dateSent: Date,
 	lastResponded: Date
 });
