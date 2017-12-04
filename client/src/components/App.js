@@ -25,7 +25,7 @@ class App extends Component {
 							 flexDirection: "column" }}
 				>
 					<Header />
-					<main>
+					<main style={{ flex: "1 0 auto" }}>
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/surveys" component={DashBoard} />
 						<Route exact path="/allSurveys" component={AllSurveysList} />
