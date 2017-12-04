@@ -19,7 +19,11 @@ class App extends Component {
 	render() {
 		return (
 			<BrowserRouter>
-				<div className="page-flexbox-wrapper">
+				<div 
+					style={{ display: "flex",
+							 minHeight: "100vh",
+							 flexDirection: "column" }}
+				>
 					<Header />
 					<main>
 						<Route exact path="/" component={Landing} />
