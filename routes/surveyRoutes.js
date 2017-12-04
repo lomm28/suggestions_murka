@@ -19,7 +19,7 @@ module.exports = app => {
 
 	app.get("/api/surveys/:surveyId/pending", (req, res) => {
 		//Survey.updateOne({ $elemMatch: {_id: req.params.surveyId}, $set: {status: "pending"} }).exec();
-		res.send("Status of the suggestion was changed to pending");
+		res.send("Status of the suggestion was changed to pending!!!");
 	});
 
 	app.get("/api/surveys/all", requireLogin, async (req, res) => {
