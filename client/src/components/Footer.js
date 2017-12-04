@@ -8,10 +8,11 @@ const Footer = () => {
 					<div className="col l6 s12">
 						<h5 className="white-text">Company Bio</h5>
 						<p className="grey-text text-lighten-4">
-							We are a team of college students working on this
-							project like it's our full time job. Any amount
-							would help support and continue development on this
-							project and is greatly appreciated.
+							Wombats are short-legged, muscular quadrupedal
+							marsupials that are native to Australia. They are
+							about 1 m (40 in) in length with small, stubby
+							tails. There are three extant species and they are
+							all members of the family Vombatidae.
 						</p>
 					</div>
 					<div className="col l3 s12">
@@ -68,12 +69,12 @@ const Footer = () => {
 			</div>
 			<div className="footer-copyright">
 				<div className="container">
-					Made by{" "}
+					Copyright © 2017
 					<a
 						className="orange-text text-lighten-3"
-						href="http://materializecss.com"
+						href="#"
 					>
-						Materialize
+						All rights reserved.
 					</a>
 				</div>
 			</div>
