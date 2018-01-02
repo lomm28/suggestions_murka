@@ -12,6 +12,8 @@ const surveySchema = new Schema({
 	type: String,
 	_user: { type: Schema.Types.ObjectId, ref: 'User' },
 	status: { type: String, default: 'Submitted' },
+	comment: String,
+	commentByManager: String,
 	userEmail: String,
 	userName: String,
 	dateSent: Date,

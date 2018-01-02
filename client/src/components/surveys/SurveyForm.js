@@ -53,7 +53,7 @@ class SurveyForm extends Component {
 					<Field 
 						component={ DropzoneField } 
 						name="uploadfile" 
-						accept="image/*, video/*, audio/mp3, .doc, .pdf"
+						accept="image/*, video/*, audio/mp3, .doc, .pdf, .zip"
 					/>
 				</div>
 			</div>
@@ -73,7 +73,7 @@ class SurveyForm extends Component {
 				>
 				
 					{ this.renderFields() }
-				
+					
 					{ this.renderDropDown() }
 
 					{ this.renderDropzoneField() }

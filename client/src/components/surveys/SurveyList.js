@@ -17,6 +17,14 @@ class SurveyList extends Component {
 		);
 	}
 
+	renderComments(comment, manager) {
+		return (
+			<blockquote>
+				<p>Commented by: <span style={{textDecoration: "underline"}}>{manager}</span></p><br />
+					<span style={{fontFamily: "Trebuchet", fontWeight: "bold"}}>{comment}</span>
+			</blockquote>
+		);
+	}
 
 	renderSurveys() {
 		return this.props.surveys.reverse().map(survey => {
@@ -25,6 +33,7 @@ class SurveyList extends Component {
 					<div className="card-content white-text">
 						<span className="card-title">{survey.title}</span>
 						<p>{survey.body}</p>
+						{ survey.comment ? this.renderComments(survey.comment, survey.commentByManager) : null }
 						<p className="right">
 							Sent On: {new Date(survey.dateSent).toLocaleDateString()}
 						</p>

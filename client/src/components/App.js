@@ -28,7 +28,7 @@ class App extends Component {
 					<main style={{ flex: "1 0 auto" }}>
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/surveys" component={DashBoard} />
-						<Route exact path="/allSurveys" component={AllSurveysList} />
+						<Route exact path="/all/surveys" component={AllSurveysList} />
 						<Route exact path="/surveys/assigned/to/user" component={AssignedToUserList} />
 						<Route path="/surveys/new" component={SurveyNew} />
 					</main>

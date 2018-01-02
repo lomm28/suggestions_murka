@@ -9,6 +9,9 @@ const formidable = require("formidable");
 const requireLogin = require("../middlewares/requireLogin");
 const dbCtrl = require("./controllers/dbCtrl");
 const dbCtrl2 = require("./controllers/dbCtrl2");
+const Mailer = require("../services/StatusMailer");
+const statusChangeNotification = require("../services/emailTemplates/statusChangeNotification");
+const commentsNotification = require("../services/emailTemplates/commentsNotification");
 
 module.exports = app => {
 	app.get("/api/surveys", requireLogin, async (req, res) => {
@@ -17,10 +20,34 @@ module.exports = app => {
 		res.send(surveys);
 	});
 
-	app.get("/api/surveys/:surveyId/pending", (req, res) => {
-		//Survey.updateOne({ $elemMatch: {_id: req.params.surveyId}, $set: {status: "pending"} }).exec();
-		res.send("Status of the suggestion was changed to pending!!!");
+	app.get("/api/surveys/:surveyId/:status", async (req, res) => {
+		res.send("Status of the suggestion was changed");
 	});
+
+	app.post('/api/surveys/webhooks', async (req, res) => {
+
+		const url = req.body[0].url;
+
+		const p = new Path('/api/surveys/:surveyId/:status');
+
+		const match = p.test(new URL(url).pathname);
+				
+		if (match) {
+				
+			await Survey.updateOne({
+				_id: match.surveyId
+			}, {
+				$set: { 'status': [match.status] }
+			}).exec();
+
+			const suggestion = await Survey.find({ _id : match.surveyId });
+				
+			const mailer = new Mailer(suggestion[0], statusChangeNotification(suggestion[0]));
+
+			await mailer.send();
+			res.end();
+		}
+	})
 
 	app.get("/api/surveys/all", requireLogin, async (req, res) => {
 		const allSurveys = await Survey.find({});
@@ -33,6 +60,22 @@ module.exports = app => {
 		const userSpecific = await Survey.find({ deptEmail : req.user.email[0].value });
 
 		res.send(userSpecific);
+	});
+
+	app.post('/api/adding_comment', async (req, res) => {
+
+		await Survey.updateOne({
+			_id: req.body.id
+				}, {
+				$set: { 'comment': [req.body.comment], 'commentByManager': [req.user.fullName] }
+		}).exec();
+
+		const addCommentToSurvey = await Survey.find({ _id : req.body.id });
+
+		const mailer = new Mailer(addCommentToSurvey[0], commentsNotification(addCommentToSurvey[0]));
+
+		await mailer.send();
+		res.send({addCommentToSurvey});
 	});
 
 	app.post("/api/surveys/", requireLogin, async (req, res) => {

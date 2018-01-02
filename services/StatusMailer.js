@@ -1,31 +1,20 @@
 const sendgrid = require("sendgrid");
 const helper = sendgrid.mail;
 const keys = require("../config/keys");
-const fs = require("fs");
-const path = require("path");
+
 
 class Mailer extends helper.Mail {
-	constructor({ subject, deptEmail }, content) {
+	constructor({ userEmail, subject }, content) {
 		super();
 
 		this.sgApi = sendgrid(keys.sendGridKey);
 		this.from_email = new helper.Email("no-reply@suggestia.com");
 		this.subject = subject;
 		this.body = new helper.Content("text/html", content);
-		this.recipient = new helper.Email(deptEmail);
+		this.recipient = new helper.Email(userEmail);
 
 		this.mail = new helper.Mail(this.from_email, this.subject, this.recipient, this.body);
 
-		this.addClickTracking();
-
-	}
-
-	addClickTracking() {
-		const trackingSettings = new helper.TrackingSettings();
-		const clickTracking = new helper.ClickTracking(true, true);
-
-		trackingSettings.setClickTracking(clickTracking);
-		this.addTrackingSettings(trackingSettings);
 	}
 
 	async send() {

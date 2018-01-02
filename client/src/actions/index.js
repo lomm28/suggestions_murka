@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_SURVEYS, FETCH_ALL_SURVEYS, FETCH_ASSIGNED_TO_USER } from './types';
+import { FETCH_USER, FETCH_SURVEYS, FETCH_ALL_SURVEYS, FETCH_ASSIGNED_TO_USER, ADD_COMMENT } from './types';
 import objectToFormData from "object-to-formdata";
 
 export const fetchUser = () => async dispatch => {
@@ -33,4 +33,10 @@ export const fetchAssignedToUser = () => async dispatch => {
 	const res = await axios.get('/api/surveys/user');
 
 	dispatch({ type: FETCH_ASSIGNED_TO_USER, payload: res.data });
+};
+
+export const addComment = (commentData) => async dispatch => {
+	const res = await axios.post('/api/adding_comment', commentData);
+	
+	dispatch({ type: ADD_COMMENT, payload: res.data });
 };

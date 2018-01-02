@@ -25,6 +25,16 @@ class Mailer extends helper.Mail {
 			attachment.setDisposition("attachment");
 			this.mail.addAttachment(attachment);
 
+			this.addClickTracking();
+
+	}
+
+	addClickTracking() {
+		const trackingSettings = new helper.TrackingSettings();
+		const clickTracking = new helper.ClickTracking(true, true);
+
+		trackingSettings.setClickTracking(clickTracking);
+		this.addTrackingSettings(trackingSettings);
 	}
 
 	async send() {

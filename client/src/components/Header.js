@@ -22,7 +22,7 @@ class Header extends Component {
 						<Link to="/surveys/assigned/to/user">Assigned to me</Link>
 					</li>,
 					<li key="3" style={{ margin: "0 10px" }}>
-						<Link to="/allSurveys">All suggestions</Link>
+						<Link to="/all/surveys">All suggestions</Link>
 					</li>,
 					<li key="2">
 						<a href="/api/logout">Log out</a>
